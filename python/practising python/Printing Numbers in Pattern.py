@@ -40,7 +40,6 @@ for row in range(1, totalrows + 1):
     # printing numbers
     for number in range(1, row + 1):
         print(f"{number}", end="")
-
     for secondary in range(1, row):
         print(f"{secondary + row}", end="")
     print()
