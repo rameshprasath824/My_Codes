@@ -5,7 +5,7 @@ import random
 range = int(input('enter upto which range you wanna play: '))
 
 # calling the below method to make intrepreter to choose one random number on its own
-number = random.randint(0,range)
+number = random.randint(0, range)
 
 # restricting users from guessing numbers beyond the range
 if range >= number:
