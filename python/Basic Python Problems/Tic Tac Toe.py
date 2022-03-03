@@ -1,5 +1,7 @@
-import pygame, sys
+# Importing Modules
 import numpy as np
+import pygame
+import sys
 
 # we should intialize pygame by using pygame.init()
 pygame.init()
@@ -21,7 +23,7 @@ LINE_WIDTH = 15
 # below statement to display the screen with given WIDTH and HEIGHT
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-#displaying window title
+# displaying window title
 pygame.display.set_caption('Tic Tac Toe')
 
 screen.fill(BG_COLOR)
@@ -30,28 +32,32 @@ screen.fill(BG_COLOR)
 board = np.zeros((BOARD_ROWS, BOARD_COLUMNS))
 print(board)
 
+
 # drawing the lines
 def drawing_lines():
-   # drawing first horizontal line
-   pygame.draw.line( screen, LINE_COLOR, (0, 200), (600, 200), LINE_WIDTH)
-   # drawing second horizontal line
-   pygame.draw.line(screen, LINE_COLOR, (0, 400), (600, 400), LINE_WIDTH)
-   # drawing first vertical line
-   pygame.draw.line(screen, LINE_COLOR, (200, 0), (200, 600), LINE_WIDTH)
-   # drawing second vertical line
-   pygame.draw.line(screen, LINE_COLOR, (400, 0), (400, 600), LINE_WIDTH)
+    # drawing first horizontal line
+    pygame.draw.line(screen, LINE_COLOR, (0, 200), (600, 200), LINE_WIDTH)
+    # drawing second horizontal line
+    pygame.draw.line(screen, LINE_COLOR, (0, 400), (600, 400), LINE_WIDTH)
+    # drawing first vertical line
+    pygame.draw.line(screen, LINE_COLOR, (200, 0), (200, 600), LINE_WIDTH)
+    # drawing second vertical line
+    pygame.draw.line(screen, LINE_COLOR, (400, 0), (400, 600), LINE_WIDTH)
+
 
 # this function will mark the square in the array
 def mark_square(row, col, player):
     board[row][col] = player
 
+
 # this function checks square is available or not
-def availabe_square(row, col):
-    #return board[row][col] == 0 this line and below if and else statement will do same operation
+def available_square(row, col):
+    # return board[row][col] == 0 this line and below if and else statement will do same operation
     if board[row][col] == 0:
         return True
     else:
         return False
+
 
 # this function checks if the board is full or not
 def is_board_full():
@@ -61,6 +67,13 @@ def is_board_full():
                 return False
     return True
 
+print(is_board_full())
+
+for row in range(BOARD_ROWS):
+    for column in range(BOARD_COLUMNS):
+        mark_square( row, column, 1)
+print(is_board_full())
+
 drawing_lines()
 
 # main loop
@@ -69,6 +82,13 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouseX = event.pos(0) # x
+            mouseY = event.pos(1) # y
+
+            print(mouseX)
+            print(mouseY)
+
+
     pygame.display.update()
-
-
